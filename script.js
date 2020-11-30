@@ -13,30 +13,33 @@ function computerPlay() {
 
 function playRound(playerSelection) {
     let computerSelection = computerPlay();
+    const compSelectPara = document.getElementById('selections');
+    compSelectPara.textContent = `Computer: ${computerSelection}. Player: ${playerSelection}`;
+
     // uses conditionals to play game
     if (playerSelection === "ppa") {
         if (computerSelection === "ppa") {
             tie('ppa');
         } else if (computerSelection === "muk") {
-            victory('ppa', 'muk');
+            currentWinner = 'player';
         } else {
-            loss('ppa', 'jji');
+            currentWinner = 'computer';
         }
     } else if (playerSelection === "jji") {
         if (computerSelection === "jji") {
             tie('jji');
         } else if (computerSelection === "ppa") {
-            victory('jji', 'ppa');
+            currentWinner = 'player';
         } else {
-            loss('jji', 'muk')
+            currentWinner = 'computer';
         }
     } else if (playerSelection === "muk") {
         if (computerSelection === "muk") {
             tie('muk');
         } else if (computerSelection === "jji") {
-            victory('muk', 'jji');
+            currentWinner = 'player';
         } else {
-            loss('muk', 'ppa');
+            currentWinner = 'computer';
         }
     }
 }
@@ -53,32 +56,28 @@ function listenForButton() {
 function tie(selection) {
     const results = document.getElementById('results');
     let result = document.createElement('p')
-    result.textContent = `It's a tie. You both shot ${selection}. Shoot again!`;
+    if (currentWinner === 'player') {
+        result.textContent = 'Player won!';
+        playerWins++;
+        updateWins();
+        currentWinner = null;
+    } else if (currentWinner === 'computer') {
+        result.textContent = 'Computer won!';
+        computerWins++;
+        updateWins();
+        currentWinner = null;
+    } else {
+        result.textContent = `You both shot ${selection}. Shoot again!`;
+    }
     results.appendChild(result);
-}
-
-function victory(playerSelection, computerSelection) {
-    const results = document.getElementById('results');
-    let result = document.createElement('p')
-    result.textContent = `You win! Computer shot ${computerSelection}. ${playerSelection} beats ${computerSelection}.`;
-    results.appendChild(result);
-
-}
-
-function loss(playerSelection, computerSelection) {
-    const results = document.getElementById('results');
-    let result = document.createElement('p')
-    result.textContent = `You lose! Computer shot ${computerSelection}. ${playerSelection} loses to ${computerSelection}.`;
-    results.appendChild(result);
-
 }
 
 listenForButton();
 
-// Counting Wins.
-let playerWins = 0, computerWins = 0;
+// Counting Wins. Declaring global variables.
+let playerWins = 0, computerWins = 0, currentWinner;
 const wins = document.getElementById('numOfWins');
-countWins();
-function countWins() {
+updateWins();
+function updateWins() {
     wins.textContent = `Player Wins: ${playerWins}.\nComputer Wins: ${computerWins}`;
 }

@@ -19,14 +19,3 @@ if (playerWins > computerWins) {
     alert("Tie. Boring!");
 }
 */
-
-
-to count wins:
-    computerWins++;
-    countWins();
-
-
-    playerWins++;
-    countWins();
-
-    
