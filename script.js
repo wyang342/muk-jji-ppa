@@ -1,13 +1,18 @@
 // Global variables
 const same = document.getElementById('same');
 const history = document.getElementById('history');
-// updating wins
+const compSelectPara = document.getElementById('selections');
+
+// Update wins
 let playerWins = 0, computerWins = 0, currentWinner;
-updateWins();
 function updateWins() {
     winCount.textContent = `Player Wins: ${playerWins}.\nComputer Wins: ${computerWins}`;
 }
+
+// Initialize Game
+updateWins();
 listenForButton();
+compSelectPara.innerHTML = 'Computer:' + '&nbsp &nbsp' + 'Player:' + '&nbsp &nbsp';
 
 function listenForButton() {
     const buttons = document.querySelectorAll('button');
@@ -32,8 +37,7 @@ function computerPlay() {
 
 function playRound(playerSelection) {
     let computerSelection = computerPlay();
-    const compSelectPara = document.getElementById('selections');
-    compSelectPara.textContent = `Computer: ${computerSelection}. Player: ${playerSelection}`;
+    compSelectPara.textContent = `Computer: ${computerSelection}  Player: ${playerSelection}`;
 
     // uses conditionals to play game
     if (playerSelection === "🖐️") {

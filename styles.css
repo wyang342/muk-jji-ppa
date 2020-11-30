@@ -26,11 +26,16 @@ a {
 }
 
 #selections {
-    font-size: 25px;
+    font-size: 40px;
 }
 
 .buttonContainer button{
-    font-size: 30px;
+    font-size: 50px;
+    margin: 10px 10px 0px 10px;
+}
+
+button:hover{
+    transform: scale(1.3);
 }
 
 #same {
@@ -47,7 +52,8 @@ a {
 }
 
 #history {
-    font-size: 10px;
+    padding-top: 40px;
+    font-size: 16px;
 }
 
 #createdBy {
@@ -58,4 +64,18 @@ a {
 #howTo {
     float: right;
     margin-right: 23px;
+}
+
+button {
+    background-color: transparent;
+}
+
+#startOver {
+    color: white;
+    font-family: Chalkduster;
+    font-size: 16px;
+}
+
+#winCount {
+    font-size: 20px;
 }
