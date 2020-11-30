@@ -1,0 +1,32 @@
+/*
+// counting wins of player & computer
+if (result.includes("Tie")) {
+    // pass
+} else if (result.includes("You win")) {
+    playerWins++;
+} else {
+    computerWins++;
+}
+
+if (playerWins > computerWins) {
+    console.log("The winner is you!");
+    alert("The winner is you!");
+} else if (playerWins < computerWins) {
+    console.log("The winner is computery!;");
+    alert("The winner is computery!");
+} else {
+    console.log("Tie. Boring!");
+    alert("Tie. Boring!");
+}
+*/
+
+
+to count wins:
+    computerWins++;
+    countWins();
+
+
+    playerWins++;
+    countWins();
+
+    
