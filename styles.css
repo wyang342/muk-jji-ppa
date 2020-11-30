@@ -24,3 +24,38 @@ a {
     text-decoration: none;
     text-align: right;
 }
+
+#selections {
+    font-size: 25px;
+}
+
+.buttonContainer button{
+    font-size: 30px;
+}
+
+#same {
+    color: #ff4c4c;
+    animation-name: shootAgainAnimation;
+    animation-duration: 0.3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes shootAgainAnimation {
+    from {color: #9c0000}
+    to {color: red;}
+}
+
+#history {
+    font-size: 10px;
+}
+
+#createdBy {
+    float: left;
+    margin-left: 5px;
+}
+
+#howTo {
+    float: right;
+    margin-right: 23px;
+}

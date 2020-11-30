@@ -1,3 +1,22 @@
+// Global variables
+const same = document.getElementById('same');
+const history = document.getElementById('history');
+// updating wins
+let playerWins = 0, computerWins = 0, currentWinner;
+updateWins();
+function updateWins() {
+    winCount.textContent = `Player Wins: ${playerWins}.\nComputer Wins: ${computerWins}`;
+}
+listenForButton();
+
+function listenForButton() {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            playRound(button.id);
+        });
+    });
+};
 
 function computerPlay() {
     // random number to determine which one computer shoots out
@@ -21,41 +40,31 @@ function playRound(playerSelection) {
         if (computerSelection === "🖐️") {
             tie('🖐️');
         } else if (computerSelection === "✊") {
-            currentWinner = 'player';
+            win();
         } else {
-            currentWinner = 'computer';
+            loss();
         }
     } else if (playerSelection === "✌️") {
         if (computerSelection === "✌️") {
             tie('✌️');
         } else if (computerSelection === "🖐️") {
-            currentWinner = 'player';
+            win();
         } else {
-            currentWinner = 'computer';
+            loss();
         }
     } else if (playerSelection === "✊") {
         if (computerSelection === "✊") {
             tie('✊');
         } else if (computerSelection === "✌️") {
-            currentWinner = 'player';
+            win();
         } else {
-            currentWinner = 'computer';
+            loss();
         }
     }
 }
 
-function listenForButton() {
-    const buttons = document.querySelectorAll('button');
-    buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-            playRound(button.id);
-        });
-    });
-};
-
 function tie(selection) {
-    const results = document.getElementById('results');
-    let result = document.createElement('p')
+    const result = document.createElement('p');
     if (currentWinner === 'player') {
         result.textContent = 'Player won!';
         playerWins++;
@@ -67,17 +76,17 @@ function tie(selection) {
         updateWins();
         currentWinner = null;
     } else {
-        result.textContent = `You both shot ${selection}. Shoot again!`;
+        same.textContent = `You both shot ${selection}. Shoot again!`;
     }
-    results.appendChild(result);
+    history.insertBefore(result, history.firstChild);
 }
 
-listenForButton();
+function win() {
+    currentWinner = 'player';
+    same.textContent = '';
+}
 
-// Counting Wins. Declaring global variables.
-let playerWins = 0, computerWins = 0, currentWinner;
-
-updateWins();
-function updateWins() {
-    winCount.textContent = `Player Wins: ${playerWins}.\nComputer Wins: ${computerWins}`;
+function loss() {
+    currentWinner = 'computer';
+    same.textContent = '';
 }
