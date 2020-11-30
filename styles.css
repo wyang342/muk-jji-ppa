@@ -1,0 +1,26 @@
+body {
+    background-image: url(images/dakota-lim-4gkD7WyaIFk-unsplash.jpg);
+    background-size: 100%;
+    text-align: center;
+}
+
+p {
+    color: white;
+    font-family: Chalkduster;
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: #000608;
+    padding: 10px;
+}
+
+a {
+    color: #cccccc;
+    font-family: Arial;
+    text-decoration: none;
+    text-align: right;
+}

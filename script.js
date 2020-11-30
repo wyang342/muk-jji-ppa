@@ -3,11 +3,11 @@ function computerPlay() {
     // random number to determine which one computer shoots out
     let num = Math.floor(Math.random() * 3);
     if (num === 0) {
-        return "muk";
+        return "✊";
     } else if (num === 1) {
-        return "jji";
+        return "✌️";
     } else if (num === 2) {
-        return "ppa";
+        return "🖐️";
     }
 }
 
@@ -17,26 +17,26 @@ function playRound(playerSelection) {
     compSelectPara.textContent = `Computer: ${computerSelection}. Player: ${playerSelection}`;
 
     // uses conditionals to play game
-    if (playerSelection === "ppa") {
-        if (computerSelection === "ppa") {
-            tie('ppa');
-        } else if (computerSelection === "muk") {
+    if (playerSelection === "🖐️") {
+        if (computerSelection === "🖐️") {
+            tie('🖐️');
+        } else if (computerSelection === "✊") {
             currentWinner = 'player';
         } else {
             currentWinner = 'computer';
         }
-    } else if (playerSelection === "jji") {
-        if (computerSelection === "jji") {
-            tie('jji');
-        } else if (computerSelection === "ppa") {
+    } else if (playerSelection === "✌️") {
+        if (computerSelection === "✌️") {
+            tie('✌️');
+        } else if (computerSelection === "🖐️") {
             currentWinner = 'player';
         } else {
             currentWinner = 'computer';
         }
-    } else if (playerSelection === "muk") {
-        if (computerSelection === "muk") {
-            tie('muk');
-        } else if (computerSelection === "jji") {
+    } else if (playerSelection === "✊") {
+        if (computerSelection === "✊") {
+            tie('✊');
+        } else if (computerSelection === "✌️") {
             currentWinner = 'player';
         } else {
             currentWinner = 'computer';
@@ -76,8 +76,8 @@ listenForButton();
 
 // Counting Wins. Declaring global variables.
 let playerWins = 0, computerWins = 0, currentWinner;
-const wins = document.getElementById('numOfWins');
+
 updateWins();
 function updateWins() {
-    wins.textContent = `Player Wins: ${playerWins}.\nComputer Wins: ${computerWins}`;
+    winCount.textContent = `Player Wins: ${playerWins}.\nComputer Wins: ${computerWins}`;
 }
