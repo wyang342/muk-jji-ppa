@@ -6,8 +6,7 @@ body {
     text-align: center;
     background-image: url(images/dakota-lim-4gkD7WyaIFk-unsplash.jpg);
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100%;
+    background-size: cover;
     background-color: #3d3d3d;
 }
 
