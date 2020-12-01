@@ -4,7 +4,7 @@ const history = document.getElementById('history');
 const compSelectPara = document.getElementById('selections');
 
 // Update wins
-let playerWins = 0, computerWins = 0, currentWinner;
+let playerWins = 0, computerWins = 0, currentWinner = null;
 function updateWins() {
     winCount.innerHTML = `Computer: ${computerWins}` + '&nbsp &nbsp | &nbsp &nbsp' + `You: ${playerWins}`;
 }
@@ -28,30 +28,36 @@ function computerPlay() {
     let num = Math.floor(Math.random() * 3);
     if (num === 0) {
         if (currentWinner === 'computer') {
-            playAudio("robot-muk");
+            playAudio("robot-muk",1);
         }
         return "✊";
     } else if (num === 1) {
         if (currentWinner === 'computer') {
-            playAudio("robot-jji");
+            playAudio("robot-jji",1);
         }
         return "✌️";
     } else if (num === 2) {
         if (currentWinner === 'computer') {
-            playAudio("robot-ppa");
+            playAudio("robot-ppa",1);
         }
         return "🖐️";
     }
 }
 
 function playRound(playerSelection) {
+    console.log(currentWinner);
     let computerSelection = computerPlay();
+
+    if ((currentWinner === null) && (computerSelection !== playerSelection)) {
+        playAudio('start',1);
+    }
+
     compSelectPara.innerHTML = `Computer: ${computerSelection}` + '&nbsp &nbsp | &nbsp &nbsp' + `You: ${playerSelection}`;
 
     // uses conditionals to play game
     if (playerSelection === "🖐️") {
         if (currentWinner === 'player') {
-            playAudio("player-ppa");
+            playAudio("player-ppa",0.8);
         }
         if (computerSelection === "🖐️") {
             tie('🖐️');
@@ -62,7 +68,7 @@ function playRound(playerSelection) {
         }
     } else if (playerSelection === "✌️") {
         if (currentWinner === 'player') {
-            playAudio("player-jji");
+            playAudio("player-jji",0.8);
         }
         if (computerSelection === "✌️") {
             tie('✌️');
@@ -73,7 +79,7 @@ function playRound(playerSelection) {
         }
     } else if (playerSelection === "✊") {
         if (currentWinner === 'player') {
-            playAudio("player-muk");
+            playAudio("player-muk",0.8);
         }
         if (computerSelection === "✊") {
             tie('✊');
@@ -89,16 +95,19 @@ function tie(selection) {
     const result = document.createElement('p');
     if (currentWinner === 'player') {
         result.textContent = 'Player won!';
+        playAudio('player-win',1);
         playerWins++;
         updateWins();
         currentWinner = null;
     } else if (currentWinner === 'computer') {
         result.textContent = 'Computer won!';
+        playAudio('comp-win',1);
         computerWins++;
         updateWins();
         currentWinner = null;
     } else {
         same.textContent = `You both shot ${selection}. Shoot again!`;
+        playAudio('shot-same',1)
     }
     history.insertBefore(result, history.firstChild);
 }
@@ -113,8 +122,9 @@ function loss() {
     same.textContent = '';
 }
 
-function playAudio(choice) {
+function playAudio(choice, vol) {
     const audio = document.getElementById(choice);
     audio.currentTime = 0;
+    audio.volume = vol;
     audio.play();
 }
