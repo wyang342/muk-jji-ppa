@@ -27,10 +27,19 @@ function computerPlay() {
     // random number to determine which one computer shoots out
     let num = Math.floor(Math.random() * 3);
     if (num === 0) {
+        if (currentWinner === 'computer') {
+            playAudio("robot-muk");
+        }
         return "✊";
     } else if (num === 1) {
+        if (currentWinner === 'computer') {
+            playAudio("robot-jji");
+        }
         return "✌️";
     } else if (num === 2) {
+        if (currentWinner === 'computer') {
+            playAudio("robot-ppa");
+        }
         return "🖐️";
     }
 }
@@ -41,6 +50,9 @@ function playRound(playerSelection) {
 
     // uses conditionals to play game
     if (playerSelection === "🖐️") {
+        if (currentWinner === 'player') {
+            playAudio("player-ppa");
+        }
         if (computerSelection === "🖐️") {
             tie('🖐️');
         } else if (computerSelection === "✊") {
@@ -49,6 +61,9 @@ function playRound(playerSelection) {
             loss();
         }
     } else if (playerSelection === "✌️") {
+        if (currentWinner === 'player') {
+            playAudio("player-jji");
+        }
         if (computerSelection === "✌️") {
             tie('✌️');
         } else if (computerSelection === "🖐️") {
@@ -57,6 +72,9 @@ function playRound(playerSelection) {
             loss();
         }
     } else if (playerSelection === "✊") {
+        if (currentWinner === 'player') {
+            playAudio("player-muk");
+        }
         if (computerSelection === "✊") {
             tie('✊');
         } else if (computerSelection === "✌️") {
@@ -93,4 +111,10 @@ function win() {
 function loss() {
     currentWinner = 'computer';
     same.textContent = '';
+}
+
+function playAudio(choice) {
+    const audio = document.getElementById(choice);
+    audio.currentTime = 0;
+    audio.play();
 }
