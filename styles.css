@@ -6,6 +6,7 @@ body {
     background-position: center;
     background-size: cover;
     background-color: #3d3d3d;
+    height: 100%;
 }
 
 p {
