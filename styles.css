@@ -1,7 +1,11 @@
 body {
-    background-color: black;
     background-size: 100%;
     text-align: center;
+    background-image: url(images/dakota-lim-4gkD7WyaIFk-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: #3d3d3d;
 }
 
 p {
@@ -16,6 +20,7 @@ footer {
     bottom: 0;
     background-color: #000608;
     padding: 10px;
+    font-size: 4vw;
 }
 
 a {
@@ -96,5 +101,8 @@ button {
     }
     #history {
         font-size: 1vw;
+    }
+    footer {
+        font-size: 1.5vw;
     }
   }
