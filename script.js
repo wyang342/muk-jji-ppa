@@ -6,13 +6,13 @@ const compSelectPara = document.getElementById('selections');
 // Update wins
 let playerWins = 0, computerWins = 0, currentWinner;
 function updateWins() {
-    winCount.innerHTML = `Computer Wins: ${computerWins}` + '&nbsp &nbsp | &nbsp &nbsp' + `Player Wins: ${playerWins}`;
+    winCount.innerHTML = `Computer: ${computerWins}` + '&nbsp &nbsp | &nbsp &nbsp' + `You: ${playerWins}`;
 }
 
 // Initialize Game
 updateWins();
 listenForButton();
-compSelectPara.innerHTML = 'Computer:' + '&nbsp &nbsp' + 'You:' + '&nbsp &nbsp';
+compSelectPara.innerHTML = `Computer: ` + '&nbsp &nbsp | &nbsp &nbsp' + 'You:' + '&nbsp';
 
 function listenForButton() {
     const buttons = document.querySelectorAll('button');
@@ -37,7 +37,7 @@ function computerPlay() {
 
 function playRound(playerSelection) {
     let computerSelection = computerPlay();
-    compSelectPara.textContent = `Computer: ${computerSelection}  You: ${playerSelection}`;
+    compSelectPara.innerHTML = `Computer: ${computerSelection}` + '&nbsp &nbsp | &nbsp &nbsp' + `You: ${playerSelection}`;
 
     // uses conditionals to play game
     if (playerSelection === "🖐️") {

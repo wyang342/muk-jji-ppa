@@ -5,25 +5,30 @@
     <title>Muk, Jji, Ppa!</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-    <div><p id='winCount'></p></div>
-    <p id='selections'></p>
-    <div class='buttonContainer'>
-        <button type='button' id='✊'>✊</button>
-        <button type='button' id='✌️'>✌️</button>
-        <button type='button' id='🖐️'>🖐️</button>
-    </div>
-    <div>
-        <p id='same'></p>
-        <button id='startOver' onClick="window.location.reload();">Start Over</button>
-        <div id='history'></div>
-    </div>
-    <footer>
-        <a href='https://github.com/wyang342' id='createdBy'>Created by wyang342</a>
-        <a href="https://en.wikipedia.org/wiki/Muk-jji-ppa" id='howTo'>How To Play</a>
-    </footer>
+    <main class='main'>
+        <div class="textContainer">
+            <p id='winCount'></p>
+            <p id='selections'></p>
+        </div>
+        <div class='buttonContainer'>
+            <button type='button' id='✊'>✊</button>
+            <button type='button' id='✌️'>✌️</button>
+            <button type='button' id='🖐️'>🖐️</button>
+        </div>
+        <div>
+            <p id='same'></p>
+            <button id='startOver' onClick="window.location.reload();">Start Over</button>
+            <div id='history'></div>
+        </div>
+        <footer>
+            <a href='https://github.com/wyang342' id='createdBy'>Made by wyang342</a>
+            <a href="https://en.wikipedia.org/wiki/Muk-jji-ppa" id='howTo'>How To Play</a>
+        </footer>
+    </main>
 </body>
 
 <script src="script.js"></script>
